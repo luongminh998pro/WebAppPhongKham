@@ -1,0 +1,98 @@
+/* Định dạng cơ bản cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f4;
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+    min-height: 100vh; /* Chiều cao tối thiểu để đẩy footer xuống cuối trang */
+    padding-top: 60px; /* Đặt khoảng cách để phần nội dung không bị che bởi menu điều hướng */
+}
+
+/* Định dạng cho container */
+.container {
+    flex: 1; /* Để container chiếm khoảng trống chính giữa */
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 350px; /* Điều chỉnh kích thước container nhỏ hơn */
+    margin-bottom: 30px; /* Thêm khoảng cách dưới container */
+}
+
+/* Định dạng cho các trường nhập liệu (textarea) */
+.input-field {
+    width: 100%; 
+    height: 60px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 8px; 
+    box-sizing: border-box; 
+    resize: none; 
+    margin-bottom: 10px;
+    font-size: 14px; 
+}
+
+/* Định dạng cho nút */
+button {
+    width: 48%; 
+    padding: 12px; /* Đảm bảo chiều cao tối thiểu là 24px */
+    background-color: #4CAF50; 
+    color: #ffffff; /* Màu chữ trắng */
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    text-align: center;
+    font-size: 16px; 
+}
+
+button:hover {
+    background-color: #45a049; 
+}
+
+/* Định dạng cho menu điều hướng */
+nav {
+    width: 100%;
+    background-color: #333; /* Màu nền tối */
+    padding: 10px 0;
+    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #ffffff; /* Màu chữ trắng cho tương phản tốt hơn */
+    text-decoration: none;
+    padding: 12px 20px; /* Đảm bảo tổng chiều cao tối thiểu là 24px */
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* Định dạng kết quả dự đoán */
+h2 {
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}

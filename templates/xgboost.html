@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About XGBoost Algorithm</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        /* Định dạng cơ bản cho toàn bộ trang */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 60px; /* Đặt khoảng cách để phần nội dung không bị che bởi menu điều hướng */
+        }
+
+        /* Định dạng cho menu điều hướng */
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        /* Container style */
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px; /* Điều chỉnh kích thước container */
+            margin-top: 80px; /* Để không bị che bởi menu */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        /* Footer style */
+        p[style] {
+            font-size: 18px;
+            text-align: right;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dataset">PPPT&Data Set</a></li>
+            <li><a href="/xgboost">XGBoost Alg</a></li>
+            <li><a href="/about">About Author</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>About thuật toán XGBoost (Extreme Gradient Boosting)</h1>
+        <p>
+            Là phương pháp học kết hợp, tổng hợp các dự đoán từ nhiều mô hình để cải thiện độ chính xác và độ tin cậy của kết quả. XGBoost được xây dựng dựa trên cơ sở của phương pháp Gradient Boosting (GBM), được cải tiến tối ưu về thuật toán và hiệu suất cả về phần cứng lẫn phần mềm, chủ yếu sử dụng cây quyết định để dự đoán.
+        </p>
+        <p>
+            Các ưu điểm của mô hình XGBoost bao gồm:
+        </p>
+        <ul>
+            <li>Tốc độ nhanh do tính toán song song</li>
+            <li>Tránh được Overfit bằng Regularization</li>
+            <li>Kiểm soát độ phức tạp của các cây và tránh overfitting</li>
+            <li>Tự động xử lý missing value</li>
+        </ul>
+        
+        <h2>Các bước thực hiện của thuật toán</h2>
+        <p><strong>Input:</strong> X tập các đặc trưng</p>
+        <p><strong>Output:</strong> Y biến mục tiêu</p>
+        <p><strong>Thực hiện:</strong></p>
+        <ol>
+            <li><strong>Khởi tạo:</strong> ŷ₁ⁿ = 0; Giả sử rằng dự đoán tổng cộng ban đầu của mô hình là 0.</li>
+            <li><strong>Xây dựng cây:</strong> Ở đây, fk là cây được xây dựng tại vòng lặp thứ k, γ là hệ số kiểm soát độ phức tạp của cây, T là số lượng nhánh của cây.</li>
+            <li><strong>Tính đạo hàm bậc nhất và bậc 2:</strong> Gjk là tổng đạo hàm bậc nhất (gradient) của hàm mất mát tại j. Hjk là tổng đạo hàm bậc 2 (hessian). gᵢ^(k-1) và hᵢ^(k-1) là đạo hàm bậc nhất và bậc hai tương ứng cho điểm dữ liệu thứ i tại vòng lặp k-1.</li>
+            <li><strong>Tính trọng số của cây:</strong> wj là trọng số tại j, tính toán dựa trên Gj và Hj.</li>
+            <li><strong>Cập nhật dự đoán tổng cộng:</strong> ŷᵢ là dự đoán tổng cộng sau mỗi cây, n là hệ số giúp kiểm soát tốc độ học.</li>
+            <li><strong>Xây dựng hàm mục tiêu:</strong> X_obj là hàm mục tiêu được xây dựng. l(yᵢ, ŷ₁ᵏ) là hàm mất mát tại vòng lặp cuối cùng. ŷ₁ = ∑(k=1)ᵏ f(xᵢ) là dự đoán tổng cộng của mô hình. Wj² là trọng số của j, λ là tham số chính quy hóa.</li>
+        </ol>
+
+        <p style="text-align: right;"><em>Thái Nguyên, 10-2024</em></p>
+    </div>
+    {% include "footer.html" %}
+</body> 
+</html>

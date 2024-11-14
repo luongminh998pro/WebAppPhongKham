@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương pháp phát triển & Mô tả Data Set</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        /* Định dạng cơ bản cho toàn bộ trang */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 60px; /* Đặt khoảng cách để phần nội dung không bị che bởi menu điều hướng */
+        }
+
+        /* Định dạng cho menu điều hướng */
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px; /* Điều chỉnh kích thước container */
+            margin-top: 80px; /* Để không bị che bởi menu */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Căn đoạn "Xin trân trọng cảm ơn!" sang phải */
+        .thanks {
+            text-align: right;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dataset">PPPT&Data Set</a></li>
+            <li><a href="/xgboost">XGBoost Alg</a></li>
+            <li><a href="/about">About Author</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Phương pháp phát triển</h1>
+        <p>
+            Ứng dụng được phát triển dựa trên kết quả nghiên cứu đề tài thạc sỹ của tác giả, dưới sự hướng dẫn khoa học của TS. Nguyễn Hải Minh và BSCK II. Lê Duy Đạo. Dữ liệu khám bệnh được thu thập từ tháng 03/2023 đến 05/2024. Trong quá trình thu thập, chúng tôi đã tuân thủ đầy đủ các quy định về bảo mật thông tin theo quy định của Bộ Y tế và của bệnh viện. Mọi thông tin có tính định danh của người bệnh đã được hoàn toàn loại bỏ.
+        </p>
+        <p>
+            Trong quá trình thực hiện, do thời gian có hạn, chắc chắn cần thêm sự góp ý của các đồng nghiệp và chuyên gia để sản phẩm được hoàn thiện hơn. Mọi góp ý xin liên hệ với tác giả.
+        </p>
+
+        <h1>Mô tả Data Set</h1>
+        <ul>
+            <li>Tổng số bản ghi: 5000</li>
+            <li>Số bàn khám/khoa khám: 51</li>
+            <li>Số mã bệnh được chẩn đoán ban đầu: 98</li>
+            <li>Đối tượng khám bệnh: 11</li>
+            <li>Từ: 43 tỉnh thành trong cả nước</li>
+        </ul>
+        <p class="thanks">Xin trân trọng cảm ơn!</p>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Author</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <style>
+        /* Định dạng cơ bản cho toàn bộ trang */
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f4; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; /* Cho phép menu và container đứng theo cột */
+            align-items: center; 
+            height: 100vh;
+            padding-top: 60px; /* Đặt khoảng cách để phần nội dung không bị che bởi menu điều hướng */
+        }
+
+        /* Menu điều hướng */
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            position: fixed; /* Giữ menu ở trên cùng */
+            top: 0;
+            left: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white; /* Đổi thành màu trắng cho phù hợp với trang trước */
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        /* Container cho phần About */
+        .about-container {
+            background-color: white; 
+            border: 2px solid #4CAF50; /* Đường viền màu xanh lá cây */
+            border-radius: 8px; 
+            padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            width: 90%; 
+            max-width: 1200px; /* Đổi kích thước tối đa thành 1200px như trang trước */
+            text-align: center; /* Căn giữa văn bản */
+            margin-top: 80px; /* Đảm bảo không bị che bởi menu */
+        }
+
+        h1 {
+            color: #333; 
+            font-size: 24px; /* Điều chỉnh kích thước tiêu đề cho phù hợp với trang trước */
+        }
+
+        p {
+            color: #555; 
+            font-size: 18px; /* Kích thước tương tự trang trước */
+            margin: 10px 0; /* Khoảng cách giữa các đoạn */
+        }
+
+        /* Định dạng cho link Zalo */
+        .zalo-link img {
+            width: 150px; /* Kích thước ảnh QR */
+            height: auto; /* Tự động điều chỉnh chiều cao */
+            margin-top: 10px; /* Khoảng cách phía trên */
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu điều hướng -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dataset">PPPT&DataSet</a></li>
+            <li><a href="/xgboost">XGBoost Alg</a></li>
+            <li><a href="/about">About Author</a></li>
+        </ul>
+    </nav>
+    
+    <div class="about-container">
+        <h1>ỨNG DỤNG XGBOOST PHÁT TRIỂN</h1>
+        <h1>PHÂN HỆ HỖ TRỢ PHÂN LOẠI KHÁM CHỮA BỆNH BAN ĐẦU</h1>
+        <p>Tác giả: Bùi Duy Thảo</p>
+        <p>SĐT: 0932333000</p>
+        <p>Lớp: CK21A - KHMT</p>
+        <p>Danh thiếp Zalo</p>
+        <div class="zalo-link">
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/0q97Ghb/Screenshot-2024-10-22-021941.jpg" alt="Screenshot-2024-10-22-021941" border="0"></a>
+        </div>
+        <p>Thái Nguyên, 10-2024</p>
+    </div>
+</body>
+</html>
