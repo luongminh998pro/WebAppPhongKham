@@ -5,119 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dự đoán Khoa Phòng</title>
     <link rel="stylesheet" href="/static/css/styles.css"> 
-    <style>
-        /* Định dạng cơ bản cho toàn bộ trang */
-        body {
-            font-family: Arial, sans-serif; 
-            background-color: #f4f4f4;
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: flex-start; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding-top: 60px; /* Đặt khoảng cách để phần nội dung không bị che bởi menu điều hướng */
-            overflow-y: auto; /* Cho phép cuộn dọc */
-        }
-
-        /* Định dạng cho tiêu đề chính */
-        h1 {
-            text-align: center;
-            font-size: 24px;
-            line-height: 1.5; /* Điều chỉnh khoảng cách giữa các dòng */
-            color: #333;
-        }
-
-        /* Container chính cho phần dự đoán */
-        .container {
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-            width: 100%;
-            max-width: 600px; /* Điều chỉnh kích thước container lớn hơn */
-        }
-
-        /* Định dạng cho các trường nhập liệu (textarea) */
-        .input-field {
-            width: 100%; 
-            height: 60px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            padding: 8px; 
-            box-sizing: border-box; 
-            resize: none; 
-            margin-bottom: 10px;
-            font-size: 14px; 
-        }
-
-        /* Định dạng cho nút */
-        button {
-            width: 48%; 
-            padding: 12px; /* Đảm bảo chiều cao tối thiểu là 24px */
-            background-color: #4CAF50; 
-            color: #ffffff; /* Màu chữ trắng */
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            text-align: center;
-            font-size: 16px; 
-        }
-
-        button:hover {
-            background-color: #45a049; 
-        }
-
-        /* Định dạng cho menu điều hướng */
-        nav {
-            width: 100%;
-            background-color: #333; /* Màu nền tối */
-            padding: 10px 0;
-            margin-bottom: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000; /* Đảm bảo menu luôn nằm trên cùng */
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li a {
-            color: #ffffff; /* Màu chữ trắng cho tương phản tốt hơn */
-            text-decoration: none;
-            padding: 12px 20px; /* Đảm bảo tổng chiều cao tối thiểu là 24px */
-            font-size: 16px;
-        }
-
-        nav ul li a:hover {
-            background-color: #575757;
-            border-radius: 5px;
-        }
-
-        /* Định dạng kết quả dự đoán */
-        h2 {
-            text-align: center;
-            font-size: 20px;
-            color: #333;
-        }
-
-        h3 {
-            text-align: center;
-            color: #666;
-        }
-    </style>
 </head>
 <body>
     <!-- Menu điều hướng -->
@@ -131,29 +18,41 @@
     </nav>
     
     <div class="container">
-        <h1>HỖ TRỢ PHÂN LOẠI<br>KHÁM CHỮA BỆNH BAN ĐẦU</h1>
-
+        <div class="header-content">
+            <!-- Phần hình ảnh -->
+            <div class="image-container">
+                <a href="https://imgbb.com/">
+                    <img src="https://i.ibb.co/vLqvq9R/logobenhvien.jpg" alt="logobenhvien" border="0">
+                </a>
+                <p class="image-caption">Tác giả: Bùi Duy Thảo</p>
+            </div>
+            <!-- Phần tiêu đề -->
+            <div class="text-container">
+                <h1>HỖ TRỢ PHÂN LOẠI<br>KHÁM CHỮA BỆNH BAN ĐẦU</h1>
+            </div>
+        </div>
+    
         <!-- Form nhập liệu -->
         <form method="POST" id="predictionForm">
             <label for="quatrinh_benhly">Quá trình bệnh lý:</label><br>
             <textarea name="quatrinh_benhly" id="quatrinh_benhly" class="input-field" rows="3" required>{{ request.form.quatrinh_benhly }}</textarea><br><br>
-
+    
             <label for="kham_benh_toanthan">Khám bệnh toàn thân:</label><br>
             <textarea name="kham_benh_toanthan" id="kham_benh_toanthan" class="input-field" rows="3" required>{{ request.form.kham_benh_toanthan }}</textarea><br><br>
-
+    
             <label for="kham_benh_cac_bophan">Khám bệnh các bộ phận:</label><br>
             <textarea name="kham_benh_cac_bophan" id="kham_benh_cac_bophan" class="input-field" rows="3" required>{{ request.form.kham_benh_cac_bophan }}</textarea><br><br>
-
+    
             <label for="ly_do_dieu_tri">Lý do điều trị:</label><br>
-            <textarea name="ly_do_dieu_tri" id="ly_do_dieu_tri" class="input-field" rows="3">{{ request.form.ly_do_dieu_tri }}</textarea><br><br> <!-- Bỏ thuộc tính required ở đây -->
-
+            <textarea name="ly_do_dieu_tri" id="ly_do_dieu_tri" class="input-field" rows="3">{{ request.form.ly_do_dieu_tri }}</textarea><br><br>
+    
             <!-- Nút "Dự đoán" và "Reset" -->
             <div class="button-container">
                 <button type="submit">Dự đoán</button>
                 <button type="button" onclick="resetForm()">Reset</button>
             </div>
         </form>
-
+    
         <!-- Kết quả dự đoán -->
         {% if prediction %}
         <h2 id="predictionResult">Nên chọn bàn khám: {{ prediction }}</h2>
@@ -178,6 +77,6 @@
             document.getElementById('f1ScoreResult').innerText = '';
         }
     </script>
-     {% include "footer.html" %}
+    {% include "footer.html" %}
 </body>
 </html>
