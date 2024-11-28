@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Độ chính xác (Accuracy)</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 60px;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 95%; /* Mở rộng chiều rộng container */
+            max-width: 1000px; /* Tăng chiều rộng tối đa */
+            margin-top: 1550px; /* Đẩy xuống thêm để tránh bị che */
+        }
+
+
+        h1 {
+            color: #333;
+            text-align: left;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .formula {
+            font-family: "Courier New", monospace;
+            background-color: #ffffff; /* Thay màu nền thành trắng */
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .formula img {
+            border: none; /* Xóa viền của ảnh */
+            max-width: 100%;
+            height: auto;
+            background-color: #ffffff; /* Đồng màu nền với phần tử cha */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .thanks {
+            text-align: right;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/accuracy">Accuracy</a></li>
+            <li><a href="/dataset">PPPT&Data Set</a></li>
+            <li><a href="/xgboost">XGBoost Alg</a></li>
+            <li><a href="/about">About Author</a></li>   
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Độ chính xác (Accuracy)</h1>
+        <p>
+            Khi xây dựng mô hình phân loại chúng ta sẽ muốn biết một cách khái quát tỷ lệ các trường hợp được dự báo đúng trên tổng số các trường hợp là bao nhiêu. Tỷ lệ đó được gọi là độ chính xác. Độ chính xác giúp ta đánh giá hiệu quả dự báo của mô hình trên một bộ dữ liệu. Độ chính xác càng cao thì mô hình của chúng ta càng chuẩn xác. Khi một ai đó nói mô hình của họ dự báo chính xác 90.5% thì chúng ta hiểu rằng họ đang đề cập tới độ chính xác được tính theo công thức:
+        </p>
+        <div class="formula">
+            
+                <img src="https://i.ibb.co/YXcCSqZ/ct1.jpg" alt="Công thức tính Accuracy">
+            
+        </div>
+        <p>
+            Tính toán accuracy trên sklearn :
+        </p>
+        <p>
+            1. from sklearn.metrics import accuracy_score
+        </p>
+        <p>
+            2. accuracy_score(y_true, y_pred)
+        </p>
+        <p>
+            Trong đó y_label là nhãn của dữ liệu và y_pred là nhãn dự báo.
+        </p>
+        <p>
+            Trong các metrics đánh giá mô hình phân loại thì độ chính xác là metric khá được ưa chuộng vì nó có công thức tường minh và dễ diễn giải ý nghĩa. Tuy nhiên hạn chế của nó là đo lường trên tất cả các nhãn mà không quan tâm đến độ chính xác trên từng nhãn. Do đó nó không phù hợp để đánh giá những tác vụ mà tầm quan trọng của việc dự báo các nhãn không còn như nhau. Hay nói cách khác, như trong ví dụ phân loại nợ xấu, việc chúng ta phát hiện đúng một hồ sơ nợ xấu quan trọng hơn việc chúng ta phát hiện đúng một hồ sơ thông thường.
+        </p>
+        <p>
+            Khi đó chúng ta sẽ quan tâm hơn tới độ chính xác được đo lường chỉ trên nhãn BAD hơn và sẽ cần những metrics như precision, recall đánh giá chuyên biệt trên nhóm này. 
+        </p>
+        <br>
+
+        <h1>F1 SCORE</h1>
+        <p>
+            <p>
+                F1 Score là trung bình điều hòa giữa precision và recall. Do đó nó đại diện hơn trong việc đánh gía độ chính xác trên đồng thời precision và recall.
+            </p>
+        </p>
+        <div class="formula">
+            
+            <img src="https://i.ibb.co/KqNpkvZ/ct2.jpg" alt="ct2" border="0">
+            
+        </div>
+        <p>
+            Trong trường hợp precision = 0 hoặc recall = 0 ta qui ước F1 = 0 
+        </p>
+        <p>
+            Ta chứng minh được rằng giá trị của F1 score luôn nằm trong khoảng của precision và recall. Thật vậy :
+        </p>
+        <div class="formula">
+            
+            <img src="https://i.ibb.co/6s0fCdB/ct3.jpg" alt="ct3" border="0">
+            
+        </div>
+
+        <p>
+            Tương tự:
+        </p>
+
+        <div class="formula">
+            
+            <img src="https://i.ibb.co/bKDk6mp/ct4.jpg" alt="ct4" border="0">
+            
+        </div>
+        <p>
+            Do đó đối với những trường hợp mà precision và recall quá chênh lệch thì F1 score sẽ cân bằng được cả hai độ lớn này và giúp ta đưa ra một đánh giá khách quan hơn. Ví dụ như kết quả bảng bên dưới :
+        </p>
+        <div class="formula">
+            
+            <img src="https://i.ibb.co/mXCmBsL/ct5.jpg" alt="ct5" border="0">
+            
+        </div>
+
+        <p>
+            Nếu dựa trên precision thì giá trị precision=91.6% cho thấy đây là một model khá tốt. Tuy nhiên trong 100 trường hợp positive thì mô hình chỉ nhận diện được đúng 55 trường hợp nên xét theo recall=55% thì đây không phải là một mô hình tốt. Trong trường hợp này 
+ sẽ được sử dụng như một chỉ số đại diện cho cả precision và recall. Điểm bằng 69% cho thấy đây là một mô hình có sức mạnh ở mức trung bình và đánh giá của chúng ta sẽ xác thực hơn so với việc quá lạc quan vào mô hình khi chỉ nhìn vào precision và quá bi quan nếu chỉ dựa trên recall.
+        </p>
+        <p>
+            Trên sklearn, f1 score được tính như sau : 
+        </p>
+        <p>
+            1. from sklearn.metrics import f1_score
+        </p>
+        <p>
+            2. f1_score(y_label, y_pred)
+        </p>
+        <p>
+            Trong đó y_label là nhãn của dữ liệu và y_pred là nhãn dự báo.
+        </p>
+
+    </div>
+
+    
+    {% include "footer.html" %}
+</body>
+</html>

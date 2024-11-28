@@ -1007,5 +1007,10 @@ def about():
     # Hiển thị thông tin tác giả
     return render_template('about.html')
 
+@app.route('/accuracy')
+def accuracy():
+    # Hiển thị thông tin độ đo
+    return render_template('accuracy.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
