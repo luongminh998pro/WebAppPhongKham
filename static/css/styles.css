@@ -149,8 +149,6 @@ h3 {
     color: #666;
 }
 
-
-
 .container {
     background-color: white; 
     padding: 20px; 
@@ -159,4 +157,20 @@ h3 {
     width: 100%;
     max-width: 600px; /* Điều chỉnh kích thước container lớn hơn */
     margin-bottom: 20px; /* Thêm khoảng cách giữa container và footer */
+}
+
+/* Media query cho điện thoại di động */
+@media screen and (max-width: 768px) {
+    nav ul {
+        gap: 10px; /* Giảm khoảng cách giữa các mục */
+    }
+
+    nav ul li a {
+        padding: 10px 15px; /* Giảm kích thước padding */
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+
+    nav {
+        padding: 8px 0; /* Giảm padding của thanh nav */
+    }
 }
